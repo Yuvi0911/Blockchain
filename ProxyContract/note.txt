@@ -1,0 +1,41 @@
+jab bhi npx hardhat node vale terminal ko close krege toh hume dobara se node run kr k contract ko deploy krna hoga.
+
+1) humne NUM1 smart contract bnaya.
+2) is smart contract ko deploy krne k liye humne num 1-script.js file bnayi.
+3) is contract ko deploy krne se phle hum prox contract me NUM1 smart contract ki help se state store krdege.
+const num1 = await upgrades.deployProxy(NUM1, [10], {
+    initializer: 'update'
+});
+ye upar vala code NUM1 k is function ko call krega.
+    function update(uint256 _num) public {
+        num = _num;
+    }
+aur is function k logic k hisab se proxy contract me num=10 store kr dega.
+
+1) num1 contract ko deploy krdegi ye script.
+    => Open 2 terminals.
+    a) npx hardhat node
+    b) npx hardhat run scripts/deploy.js --network localhost
+
+ab hume num ki value check krni h toh hum hardhat k console me jaiye ge aur humare paas jo address aaya tha sc deploy krne k baad ushe attach kr k us k increment function ko call krege.
+ a) npx hardhat console --network localhost
+ b) const NUM1 = await ethers.getContractFactory("NUM1");
+ c) const num1 = await NUM1.attach('0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0)
+ d) (await num1.get()).toString();
+
+---------------------------------------------------
+ ab hume NUM1 me ek naya feature add krna h jo num variable ki value increment kre.
+---------------------------------------------------
+
+1) hum ek naya smart contract bnaye ge aur usme NUM1 ka code copy paste krege aur usme ek increment ka function add krdege aur is naye contract ko upgrade_num1.js file ki help se deploy krege.
+2) iski upgrade file bnaye ge => upgrade_num1.js aur usko deploy krege => npx hardhat run --network localhost .\scripts\upgrade_num1.js.
+3) await upgrades.upgradeProxy('0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0', NUM2);
+    => ye proxy k address aur storage ko same rhke gi aur keval logic ko NUM1 se NUM2 me convert krdegi.
+4) user ki request jo aayegi vo request proxy contract k same address pr aaye gi aur proxy contract usko aage NUM1 ya NUM2 pr forward krega.
+
+5) npx hardhat console --network localhost => open hardhat console and now write below commands.
+const NUM2 = await ethers.getContractFactory("NUM2");
+const num2 = await NUM2.attach('0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0');
+await num2.increment();
+
+(await num2.get()).toString()

@@ -1,0 +1,23 @@
+jab bhi error aaye toh sbse phle package check krna ki compitable h ya nhi
+
+------------------------------------
+deployment of smart contract for new version of hardhat
+------------------------------------
+ const B = await ethers.getContractFactory("B");
+  const b = await B.deploy();
+
+  await b.waitForDeployment(); // instead of .deployed()
+
+  console.log("Contract B deployed at:", await b.getAddress());
+
+
+  1) num1 contract ko deploy krdegi ye script.
+    => Open 2 terminals.
+    a) npx hardhat node
+    b) npx hardhat run scripts/deploy.js --network localhost
+
+ab hume num ki value check krni h toh hum hardhat k console me jaiye ge aur humare paas jo address aaya tha sc deploy krne k baad ushe attach kr k us k increment function ko call krege.
+ a) npx hardhat console --network localhost
+ b) const NUM1 = await ethers.getContractFactory("NUM1");
+ c) const num1 = await NUM1.attach('0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0)
+ d) (await num1.get()).toString();

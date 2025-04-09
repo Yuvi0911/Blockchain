@@ -1,0 +1,18 @@
+In first terminal =>
+npx hardhat node
+In second terminal =>
+npx hardhat run --network localhost .\script\B.sol
+
+Hum directly deployment vali file me smart contract k function call kr k value console krva skte h jo smart contract k function return kr rhe h.
+
+--------------------------------------------------
+yadi mujhe hardhat console se smart contract k function call krne h toh
+--------------------------------------------------
+
+1) npx hardhat console --network localhost => open hardhat console into terminal
+2) Connect to contract by using contract deployment address
+    const B = await ethers.getContractFactory("B");
+    const b = await B.attach("0x5FC8d32690cc91D4c39d9d3abcBD16989F875707");
+3) Call function of Smart contract using 'b'
+    await b.setValue(10);
+    (await b.doubleValue()).toString()
