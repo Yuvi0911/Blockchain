@@ -10,6 +10,12 @@ async function main() {
   await b.setValue(9);
   const double = await b.doubleValue();
   console.log("Double value is:", double.toString());
+
+  const speakB = await b.speak();
+  console.log(speakB.toString());
+
+  const speakA = await b.speakFromA();
+  console.log(speakA);
 }
 
 main()

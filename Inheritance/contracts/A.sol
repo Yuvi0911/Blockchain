@@ -10,4 +10,9 @@ contract A {
     function getValue() public view returns(uint256){
         return value;
     }
+
+    // virtual function => this function can be overridden by child contracts.
+    function speak() public virtual pure returns (string memory){
+        return "Hey, I am A";
+    } 
 }
