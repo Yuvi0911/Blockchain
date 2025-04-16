@@ -17,4 +17,6 @@ async function main() {
 // proxy address(users ka address wahi rhta h) aur storage(Proxy contract ka storage preserved rhta h)
     console.log("NUM1 upgraded to NUM2");
 }
-main();
+main().catch((err)=>{
+    console.log(err);
+});
