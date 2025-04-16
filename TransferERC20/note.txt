@@ -1,0 +1,14 @@
+humne ye app polygon amoy pr bhi deploy krdi h AIDA account ki help se. Jab bhi dobara deploy krni h toh env me se value le kr hardhat.config.js me daal deni h.
+
+humne jo smart contract likha h vo ek account jo hamare frontend se connect h us account se receiver account me hamare smart contract k dvara bnaye gye token ko transfer krega.
+
+jab hum ek account se dusre account me token transfer krege toh metamask k account me hume token dekhne k liye hume token ko import krna hoga.
+Steps =>
+1)hum token pr click kr k 3 dots pr click kr k import option pr jaa kr apne smart contract jis address pr deploy h uska address(hame deploy.js me comment out kr rhka h) dege aur is se hamara smart contract import ho jaiye ga hamare account me.
+
+How to make our own token =>
+1) hum openzepplin install krege.
+2) ERC20 token ko import krege aur us se apne smart contract ko inherit krege.
+3) apne smart contract me constructor k andar token amount likhe ge mint function k andar. mint function us detail ko blockchain pr mint kr dega.
+4) smart contract ko deploy kr dege => npx hardhat run --network localhost script/deploy.js
+5) frontend se ethers library ki help se contract se communicate krege.
